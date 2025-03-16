@@ -1,0 +1,75 @@
+爬蟲網站設定:
+urlSet=https://www.ansin168.com/products/
+find=div.Tab-content.js-tab-content.active
+
+連結資料庫:
+db_host=localhost
+db_user=sales
+db_password=123456
+db_name=expstore
+db_charset=utf8
+
+
+使用說明:
+urlSet是放置你網址的地方
+find是放你要抓取的html標籤
+
+執行流程:
+1. urlSet請放入
+2.看要擷取哪個標籤內容 就寫在find裡面
+    (先寫標籤名 #表示id .表示class 注意此處撰寫格式 id和class結束要空格 若有多個class則不用空格)
+3.執行python
+4.輸入你的產品網址
+5.產出內容為.txt檔案
+
+
+
+
+
+
+
+
+使用範例:
+要爬蟲的網頁有三
+分別為https://www.test.com/01 與 https://www.test.com/02 和 https://www.test.com/03
+
+
+裡面程式碼為
+<html>
+    <head>
+        <div>
+            我是第1個
+        </div>
+        <div class="head_one">
+            我是第2個
+        </div>
+    </head>
+    <body>
+        <div class="body_font" id="body_first">
+            我是第3個
+            <div class="body_font body_bgc body_img">
+                我是第4個
+            </div>
+        </div>
+        <div class="body_font body_bgc body_img" id="body_second">
+            我是第5個
+        </div>
+    </body>
+</html>
+
+1.urlSet請放https://www.test.com/
+
+2.看要擷取哪個標籤內容 就寫在find裡面
+    抓html整個內容  find=html
+    抓"我是第1個"   find=div
+    抓"我是第2個"   find=div.head_one
+    抓"我是第3個"   find=div#body_first .body_font                           (要注意id和class間的空格)
+    抓"我是第4個"   find=div.body_font.body_bgc                              (多個class用.連接 之間不用空格)
+    抓"我是第5個"   find=div#body_second .body_font.body_bgc.body_img        (要注意id和class間的空格 多個class不用空格)
+
+3.執行python
+
+4.輸入你的產品網址
+    如果是https://www.test.com/01 請在執行python後輸入01
+
+5.產出內容為.txt檔案
